@@ -9,3 +9,22 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+# IBM Cloud CLI config
+.bluemix
+
+# Terraform automation
+automation
+
+# Binaries
+ibmcloud
+oc
+terraform
+
+# Logs
+logs
+
+# Ignore any .tfvars files that are generated automatically for each Terraform run.
+*.tfvars
+
+# Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
+# example: *tfplan*
