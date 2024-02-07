@@ -1,0 +1,4 @@
+[vmhost]
+localhost ansible_connection=local ansible_user=root
+
+#10.20.176.72 ansible_connection=ssh ansible_user=root
