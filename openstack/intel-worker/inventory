@@ -1,4 +1,4 @@
 [vmhost]
-localhost ansible_connection=local ansible_user=root
+api.rohinijumpbox.cp.fyre.ibm.com ansible_connection=ssh ansible_user=root
 
-#10.20.176.72 ansible_connection=ssh ansible_user=root
+# localhost ansible_connection=local ansible_user=root
