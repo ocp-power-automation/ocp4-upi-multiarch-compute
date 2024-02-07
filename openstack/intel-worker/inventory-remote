@@ -1,0 +1,2 @@
+[vmhost]
+<update-ip> ansible_connection=ssh ansible_user=root
