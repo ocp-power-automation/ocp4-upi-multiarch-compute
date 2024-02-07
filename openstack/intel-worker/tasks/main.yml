@@ -1,0 +1,38 @@
+---
+- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
+  hosts: all
+  vars_files:
+    - ../vars/main.yml
+
+  tasks:
+  - name: Create worker-mca.ign and store it to /var/www/html/ignition/
+    ansible.builtin.get_url:
+      url: https://{{ bastion_ip }}:22623/config/worker
+      validate_certs: no
+      dest: /var/www/html/ignition/worker-mca.ign
+      mode: 0440
+      headers:
+        Accept: "application/vnd.coreos.ignition+json"
+        version: "3.2.0"
+
+  - name: Get b64 encoded '/etc/hostname' for worker
+    shell: echo "{{ worker_hostname }}" | base64 -w0
+    register: hostname_b64_encoded
+
+  - name: Get b64 encoded '/etc/resolv.conf' file content for worker
+    shell: |
+      cat << EOF | base64 -w0
+           search $(hostname -d)
+           nameserver $(hostname -i | awk '{print $NF}')
+    register: etc_resolve_b64_encoded
+
+  - name: Set the variables (To be used in Customization Script)
+    set_fact:
+      worker_hostname_encoded: "{{ hostname_b64_encoded.stdout }}"
+      etc_resolve_encoded: "{{ etc_resolve_b64_encoded.stdout }}"
+
+  - name: Create Customization Script
+    template:
+      src: ../templates/worker-amd64.ign.j2
+      dest: /tmp/worker-amd64.ign
+

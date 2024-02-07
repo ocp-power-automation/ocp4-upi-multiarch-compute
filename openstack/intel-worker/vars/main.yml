@@ -1,0 +1,7 @@
+---
+bastion_ip: ""
+worker_hostname: ""
+http_port: "8080"
+https_port: "443"
+worker_hostname_encoded: ""
+etc_resolve_encoded: ""
