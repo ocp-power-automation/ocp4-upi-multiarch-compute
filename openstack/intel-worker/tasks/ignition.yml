@@ -10,13 +10,13 @@
       url: https://{{ bastion_ip }}:22623/config/worker
       validate_certs: no
       dest: /var/www/html/ignition/worker-amd64.ign
-      mode: 0440
+      mode: 0644
       headers:
         Accept: "application/vnd.coreos.ignition+json;version=3.4.0"
 
   - name: Set the variables to be used during encoding the template
     set_fact:
-      target_ip: "{{ ansible_facts['locally_reachable_ips']['ipv4'][0] }}"
+      # target_ip: "{{ ansible_facts['locally_reachable_ips']['ipv4'][0] }}"
       domain_name: "{{ ansible_facts['domain'] }}"
 
   - name: Set the variables (To be used in Customization Script)
