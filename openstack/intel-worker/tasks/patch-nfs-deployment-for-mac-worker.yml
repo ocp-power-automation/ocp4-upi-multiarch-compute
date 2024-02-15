@@ -1,0 +1,35 @@
+---
+- name: Patch nfs-client-provisioner deployment to run on master node
+  hosts: all
+  vars_files:
+    - ../vars/main.yml
+
+  tasks:
+  - name: Check if nfs-client-provisioner deployment exists
+    shell:
+      cmd: |
+        oc get deployment "{{ nfs_deployment }}" -n "{{ nfs_namespace }}"
+    register: nfs_deploy_output
+
+  - name: Patch nfs-client-provisioner deployment to run on master node
+    shell:
+      cmd: |
+        oc patch deployments "{{ nfs_deployment }}" -n "{{ nfs_namespace }}" -p '{"spec": {"template": {"spec": {"tolerations": [{"effect": "NoSchedule", "key": "node-role.kubernetes.io/master", "operator": "Exists"}]}}}}'
+        oc patch deployments "{{ nfs_deployment }}" -n "{{ nfs_namespace }}" -p '{"spec": {"template": {"spec": {"nodeSelector": {"node-role.kubernetes.io/master": ""}}}}}'
+    when: nfs_deploy_output.stdout != ""
+
+  - name: Get nfs-client-provisioner deployment Image
+    shell:
+      cmd: |
+         oc describe deployment "{{ nfs_deployment }}" -n "{{ nfs_namespace }}" | grep Image
+    register: nfs_image_output
+    when: nfs_deploy_output.stdout != ""
+
+  - name: Check and update Image (if belongs to 'gcr.io/k8s-staging-sig-storage') of nfs-client-provisioner deployment to 'registry.k8s.io/sig-storage'
+    shell:
+      cmd: |
+         oc patch deployment "{{ nfs_deployment }}" -n "{{ nfs_namespace }}" --type "json" -p '[
+          {"op":"remove","path":"/spec/template/spec/containers/0/image"},
+          {"op":"add","path":"/spec/template/spec/containers/0/image","value":"registry.k8s.io/sig-storage/nfs-subdir-external-provisioner:v4.0.2"}]'
+    when: "'gcr.io' in nfs_image_output.stdout"
+

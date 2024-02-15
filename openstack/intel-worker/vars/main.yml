@@ -1,16 +1,19 @@
 ---
-bastion_ip: ""
-worker_hostname: ""
-http_port: "8080"
-https_port: "443"
 
 # Used in ignition task
+worker_hostname: ""
 worker_hostname_encoded: ""
 etc_resolve_encoded: ""
-target_ip: ""
+bastion_ip: ""
 domain_name: ""
+http_port: "8080"
+https_port: "443"
 
 # Ignition Files
 dns_none_conf: |-
   [main]
   dns=none
+
+# Used in patch nfs deployment task
+nfs_namespace: "nfs-provisioner"
+nfs_deployment: "nfs-client-provisioner"
