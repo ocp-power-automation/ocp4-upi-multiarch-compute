@@ -28,3 +28,4 @@
     template:
       src: ../templates/worker-amd64.ign.j2
       dest: /tmp/worker-amd64.ign
+      
