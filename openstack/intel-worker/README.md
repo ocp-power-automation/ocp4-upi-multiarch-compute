@@ -21,3 +21,11 @@ The task removes the centos_image from OpenStack.
 ### tasks/remove_rhcos_image.yml
 
 The task removes the rhcos image from OpenStack.
+
+### tasks/create_flavor.yml
+
+The task creates the cpu/ram flavor on OpenStack that aligns with supported worker sizes.
+
+### tasks/remove_flavor.yml
+
+The task removes the custom cpu/ram flavor on OpenStack.
