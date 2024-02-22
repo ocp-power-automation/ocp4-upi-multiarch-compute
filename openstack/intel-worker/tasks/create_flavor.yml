@@ -1,0 +1,17 @@
+---
+- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
+  hosts: all
+  vars_files:
+    - ../vars/main.yml
+
+  tasks:
+    - name: Create flavor to openstack
+      openstack.cloud.compute_flavor:
+        cloud: openstack
+        state: present
+        name: "{{ custom_flavor_name }}"
+        ram: "{{ custom_flavor_ram }}"
+        vcpus: "{{ custom_flavor_vcpus }}"
+        disk: "{{ custom_flavor_disk }}"
+        ephemeral: "{{ custom_flavor_ephemeral }}"
+        description: "{{ custom_flavor_description }}"

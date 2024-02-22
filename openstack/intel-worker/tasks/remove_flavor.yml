@@ -1,0 +1,13 @@
+---
+- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
+  hosts: all
+  vars_files:
+    - ../vars/main.yml
+
+  tasks:
+    - name: remove flavor from openstack
+      openstack.cloud.compute_flavor:
+        cloud: openstack
+        state: absent
+        name: "{{ custom_flavor_name }}"
+        
