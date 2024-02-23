@@ -18,6 +18,9 @@ dns_none_conf: |-
 nfs_namespace: "nfs-provisioner"
 nfs_deployment: "nfs-client-provisioner"
 
+# Used in patch ingresscontroller
+ingress_operator_namespace: "openshift-ingress-operator"
+
 # Image details Rhcos
 image_name_rhcos: "RHCOS_img"
 image_container_format_rhcos: "bare"
