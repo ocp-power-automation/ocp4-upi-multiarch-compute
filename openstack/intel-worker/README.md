@@ -29,3 +29,7 @@ The task creates the cpu/ram flavor on OpenStack that aligns with supported work
 ### tasks/remove_flavor.yml
 
 The task removes the custom cpu/ram flavor on OpenStack.
+
+### tasks/patch-co-ingress-for-mac-worker.yml
+
+The task task patches the ingress to run on the primary architecture of the cluster. In this case, it's ppc64le.
