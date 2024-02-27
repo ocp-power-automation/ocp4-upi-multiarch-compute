@@ -42,6 +42,14 @@ The task removes virtual machine on OpenStack.
 
 The task start/stop/restart virtual machine on OpenStack.
 
+### tasks/create_host_aggregate.yml
+
+The task create a list of host aggregate (host group) on OpenStack.
+
+### tasks/remove_host_aggregate.yml
+
+The task removes host aggregate (host group) on OpenStack.
+
 ### tasks/patch-co-ingress-for-mac-worker.yml
 
 The task task patches the ingress to run on the primary architecture of the cluster. In this case, it's ppc64le.

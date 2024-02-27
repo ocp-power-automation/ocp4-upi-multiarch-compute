@@ -94,3 +94,11 @@ virtual_machine_server_action: "start"
     # "unshelve"
 virtual_machine_action_timeout: 200
 virtual_machine_action_wait: true
+
+
+# Host aggregate details
+host_aggregate_name: "multi-arch-compute-aggregate"
+host_availability_zone_name: "multi-arch-aggregate"
+host_name_list: [<host1>,<host2>,<host3>]
+#Examples:
+#host_name_list: ["xcloud8","xcloud7","xcloud10"]
