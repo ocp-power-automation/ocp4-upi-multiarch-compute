@@ -10,5 +10,3 @@
       cloud: openstack
       state: absent
       name: "{{ host_aggregate_name }}"
-       
-      
