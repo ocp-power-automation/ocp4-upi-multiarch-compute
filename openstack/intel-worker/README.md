@@ -52,4 +52,8 @@ The task removes host aggregate (host group) on OpenStack.
 
 ### tasks/patch-co-ingress-for-mac-worker.yml
 
-The task task patches the ingress to run on the primary architecture of the cluster. In this case, it's ppc64le.
+The task patches the ingress to run on the primary architecture of the cluster. In this case, it's ppc64le.
+
+### tasks/update-chrony-configuration.yml
+
+The task updates the chrony.cfg based on subnet list on Bastion.

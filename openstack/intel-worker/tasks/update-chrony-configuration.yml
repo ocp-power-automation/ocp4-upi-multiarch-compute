@@ -1,0 +1,47 @@
+---
+- name: Update the Chrony config
+  hosts: all
+  vars_files:
+    - ../vars/main.yml
+
+  tasks:
+
+  - name: Generate the subnet list
+    shell:
+      cmd: |
+        # Create the subnets.yml
+        cat << EOF > subnets.yml
+        ---
+        subnets:
+        EOF
+        # Populate data in subnets.yml
+        for SUBNET in $(ip r | grep -v default | awk '{print $1}')
+        do
+        cat << EOF >> subnets.yml
+          - { subnet: '${SUBNET}'}
+        EOF
+        done
+
+  - name: Backup the prior Chrony configuration
+    shell:
+      cmd: |
+        mv /etc/chrony.conf.backup /etc/chrony.conf.backup-$(date +%s) || true
+        cp -f /etc/chrony.conf /etc/chrony.conf.backup
+
+  - name: Include vars of the subnets.yml
+    include_vars: 
+      file: subnets.yml
+
+  - name: Update the chrony config
+    ansible.builtin.replace:
+      path: /etc/chrony.conf
+      regexp: "# Allow NTP client access from local network.\n"
+      replace: "# Allow NTP client access from local network.\nallow {{ item.subnet }}\n"
+    loop: "{{ subnets }}"
+  
+  - name: Restart chronyd
+    shell:
+      cmd: |
+        sleep 5
+        systemctl restart chronyd
+
