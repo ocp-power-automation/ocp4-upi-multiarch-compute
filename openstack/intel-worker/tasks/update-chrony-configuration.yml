@@ -31,12 +31,9 @@
     include_vars: 
       file: subnets.yml
 
-  - name: Update the chrony config
-    ansible.builtin.replace:
-      path: /etc/chrony.conf
-      regexp: "# Allow NTP client access from local network.\n"
-      replace: "# Allow NTP client access from local network.\nallow {{ item.subnet }}\n"
-    loop: "{{ subnets }}"
+  - name: Conditionally add allow subnet in chrony.conf
+    include_tasks: update-chrony-subnet.yml
+    loop: "{{subnet_list.stdout_lines}}"
   
   - name: Restart chronyd
     shell:
