@@ -6,20 +6,12 @@
 
   tasks:
   - name: Generate the subnet list
-    shell:
-      cmd: |
-        # Create the subnets.yml
-        cat << EOF > subnets.yml
-        ---
-        subnets:
-        EOF
-        # Populate data in subnets.yml
-        for SUBNET in $(ip r | grep -v default | awk '{print $1}')
-        do
-        cat << EOF >> subnets.yml
-          - { subnet: '${SUBNET}'}
-        EOF
-        done
+    shell: ip r | grep -v default | awk '{print \$1}'
+    register: subnet_list
+
+  - name: Print the subnets
+    ansible.builtin.debug:
+      var: subnet_list.stdout_lines
 
   - name: Backup the prior Chrony configuration
     shell:
