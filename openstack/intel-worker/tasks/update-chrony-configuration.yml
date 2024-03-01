@@ -19,9 +19,6 @@
         mv /etc/chrony.conf.backup /etc/chrony.conf.backup-$(date +%s) || true
         cp -f /etc/chrony.conf /etc/chrony.conf.backup
 
-  - name: Include vars of the subnets.yml
-    include_vars: 
-      file: subnets.yml
 
   - name: Conditionally add allow subnet in chrony.conf
     include_tasks: update-chrony-subnet.yml
