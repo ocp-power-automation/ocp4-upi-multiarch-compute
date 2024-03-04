@@ -15,4 +15,3 @@
     regexp: "# Allow NTP client access from local network.\n"
     replace: "# Allow NTP client access from local network.\nallow {{ item }}\n"
   when: result.stdout == ""
-
