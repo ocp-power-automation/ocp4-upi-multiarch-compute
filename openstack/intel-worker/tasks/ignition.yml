@@ -1,31 +1,25 @@
 ---
-- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
-  hosts: all
-  vars_files:
-    - ../vars/main.yml
+- name: Create worker.ign and store it to /var/www/html/ignition/
+  ansible.builtin.get_url:
+    url: https://{{ bastion_ip }}:22623/config/worker
+    validate_certs: false
+    dest: /var/www/html/ignition/worker-amd64.ign
+    mode: "0644"
+    headers:
+      Accept: application/vnd.coreos.ignition+json;version=3.4.0
 
-  tasks:
-  - name: Create worker.ign and store it to /var/www/html/ignition/
-    ansible.builtin.get_url:
-      url: https://{{ bastion_ip }}:22623/config/worker
-      validate_certs: no
-      dest: /var/www/html/ignition/worker-amd64.ign
-      mode: 0644
-      headers:
-        Accept: "application/vnd.coreos.ignition+json;version=3.4.0"
+- name: Set the variables to be used during encoding the template
+  ansible.builtin.set_fact:
+    domain_name: "{{ ansible_facts['domain'] }}"
 
-  - name: Set the variables to be used during encoding the template
-    set_fact:
-      domain_name: "{{ ansible_facts['domain'] }}"
+- name: Set the variables (To be used in Customization Script)
+  ansible.builtin.set_fact:
+    worker_hostname_encoded: "{{ worker_hostname | b64encode }}"
+    dns_none_encoded: "{{ dns_none_conf | b64encode }}"
+    etc_resolve_encoded: "{{ lookup('template', 'resolv.conf.j2') | b64encode }}"
 
-  - name: Set the variables (To be used in Customization Script)
-    set_fact:
-      worker_hostname_encoded: "{{ worker_hostname | b64encode }}"
-      dns_none_encoded: "{{ dns_none_conf | b64encode }}"
-      etc_resolve_encoded: "{{ lookup('template', '../templates/resolv.conf.j2') | b64encode}}"
-
-  - name: Create the Intel ignition file
-    template:
-      src: ../templates/worker-amd64.ign.j2
-      dest: /tmp/worker-amd64.ign
-      
+- name: Create the Intel ignition file
+  ansible.builtin.template:
+    src: worker-amd64.ign.j2
+    dest: /tmp/worker-amd64.ign
+    mode: "0644"

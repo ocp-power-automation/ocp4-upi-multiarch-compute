@@ -1,3 +1,4 @@
+---
 galaxy_info:
   author: Chandan Abhyankar
   description: Enables support operations for adding OpenStack worker node to PowerVM based OCP Cluster
@@ -11,5 +12,4 @@ galaxy_info:
         - all
 
   galaxy_tags: []
-
 dependencies: []

@@ -1,17 +1,11 @@
 ---
-- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
-  hosts: all
-  vars_files:
-    - ../vars/main.yml
-
-  tasks:
-    - name: Remove RHCOS images from openstack.
-      openstack.cloud.image:
-        cloud: openstack
-        state: absent
-        name: "{{ image_name_rhcos }}"
-        disk_format: "{{ image_disk_format_rhcos }}"
-        is_public: "{{ image_is_public_rhcos }}"
-        properties:
-          cpu_arch: "{{ image_cpu_arch_rhcos }}"
-          distro: "{{ image_distro_rhcos }}"
+- name: Remove RHCOS images from openstack.
+  openstack.cloud.image:
+    cloud: openstack
+    state: absent
+    name: "{{ image_name_rhcos }}"
+    disk_format: "{{ image_disk_format_rhcos }}"
+    is_public: "{{ image_is_public_rhcos }}"
+    properties:
+      cpu_arch: "{{ image_cpu_arch_rhcos }}"
+      distro: "{{ image_distro_rhcos }}"

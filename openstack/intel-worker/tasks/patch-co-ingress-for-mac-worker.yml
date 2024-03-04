@@ -1,12 +1,7 @@
 ---
-- name: Patch ingresscontroller to run pods on ppc64le worker node/s
-  hosts: all
-  vars_files:
-    - ../vars/main.yml
-
-  tasks:
-  - name: Patch ingresscontroller
-    shell:
-      cmd: |
-        oc patch ingresscontroller default -n "{{ ingress_operator_namespace }}" --type merge -p '{"spec": {"nodePlacement": {"nodeSelector": {"matchLabels": {"kubernetes.io/arch": "ppc64le"}}}}}'
-
+- name: Patch ingresscontroller to run on ppc64le nodes
+  ansible.builtin.shell:
+    cmd: |
+      oc patch ingresscontroller default -n "{{ ingress_operator_namespace }}" --type merge \
+        -p '{"spec": {"nodePlacement": {"nodeSelector": {"matchLabels": {"kubernetes.io/arch": "ppc64le"}}}}}'
+  check_mode: false

@@ -15,51 +15,51 @@ dns_none_conf: |-
   dns=none
 
 # Used in patch nfs deployment task
-nfs_namespace: "nfs-provisioner"
-nfs_deployment: "nfs-client-provisioner"
+nfs_namespace: nfs-provisioner
+nfs_deployment: nfs-client-provisioner
 
 # Used in patch ingresscontroller
-ingress_operator_namespace: "openshift-ingress-operator"
+ingress_operator_namespace: openshift-ingress-operator
 
 # Image details Rhcos
-image_name_rhcos: "RHCOS_img"
-image_container_format_rhcos: "bare"
-image_disk_format_rhcos: "qcow2"
-image_dest_filename_rhcos: "/tmp/rhcos-openstack.x86_64.qcow2.gz"
+image_name_rhcos: RHCOS_img
+image_container_format_rhcos: bare
+image_disk_format_rhcos: qcow2
+image_dest_filename_rhcos: /tmp/rhcos-openstack.x86_64.qcow2.gz
 image_is_public_rhcos: true
-image_url_rhcos: "https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/latest/rhcos-openstack.x86_64.qcow2.gz"
-image_cpu_arch_rhcos: "x86_64"
-image_distro_rhcos: "rhel"
+image_url_rhcos: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/latest/rhcos-openstack.x86_64.qcow2.gz
+image_cpu_arch_rhcos: x86_64
+image_distro_rhcos: rhel
 image_validate_certs_rhcos: false
 
 # Image details centos
-image_name_centos: "Centos9_img"
-image_container_format_centos: "bare"
-image_disk_format_centos: "qcow2"
-image_dest_filename_centos: "/tmp/CentOS-Stream-GenericCloud-9-20230327.0.x86_64.qcow2"
+image_name_centos: Centos9_img
+image_container_format_centos: bare
+image_disk_format_centos: qcow2
+image_dest_filename_centos: /tmp/CentOS-Stream-GenericCloud-9-20230327.0.x86_64.qcow2
 image_is_public_centos: true
-image_url_centos: "https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-20230327.0.x86_64.qcow2"
-image_cpu_arch_centos: "x86_64"
-image_distro_centos: "rhel"
+image_url_centos: https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-20230327.0.x86_64.qcow2
+image_cpu_arch_centos: x86_64
+image_distro_centos: rhel
 image_validate_certs_centos: false
 
 # Custom flavor details
-custom_flavor_name: "rdr_mac_8vcpu_16ram"
+custom_flavor_name: rdr_mac_8vcpu_16ram
 custom_flavor_ram: 16
 custom_flavor_vcpus: 8
 custom_flavor_disk: 80
 custom_flavor_ephemeral: 80
-custom_flavor_description: "custom flavour for mac intel worker 8 vcpu and 16gb ram"
+custom_flavor_description: custom flavour for mac intel worker 8 vcpu and 16gb ram
 
 # Virtual_machine details
-virtual_machine_name: "rdr-mac-worker"
-virtual_machine_region_name: "RegionOne"
-vitrual_machine_availability_zone: "<provide the availability_zone name>"
-virtual_machine_image_name: "<Provide the image name>"
-virtual_machine_flavor: "<Provide the flavor name>"
+virtual_machine_name: rdr-mac-worker
+virtual_machine_region_name: RegionOne
+vitrual_machine_availability_zone: <provide the availability_zone name>
+virtual_machine_image_name: <Provide the image name>
+virtual_machine_flavor: <Provide the flavor name>
 virtual_machine_volume_size: 80
-virtual_machine_keypair_name: "<Provide the keypair name>"
-virtual_machine_network_name: "<Provide the network name>"
+virtual_machine_keypair_name: <Provide the keypair name>
+virtual_machine_network_name: <Provide the network name>
 virtual_machine_userdata: "#!/bin/sh\nyum -y install python3"
 # virtual_machine_userdata: "|\n#cloud-config\nchpasswd:\nlist: |\nubuntu:passw0rd\nexpire: False\npackages:\n- ansible\npackage_upgrade: true"
 # Examples:
@@ -74,31 +74,29 @@ virtual_machine_userdata: "#!/bin/sh\nyum -y install python3"
 #         package_upgrade: true
 virtual_machine_timeout: 300
 
-
 # Virtual machine action
-virtual_machine_server_action: "start"
+virtual_machine_server_action: start
 # server action list
-    # "lock"
-    # "pause"
-    # "reboot_hard"
-    # "reboot_soft"
-    # "rebuild"
-    # "resume"
-    # "shelve"
-    # "shelve_offload"
-    # "start"
-    # "stop"
-    # "suspend"
-    # "unlock"
-    # "unpause"
-    # "unshelve"
+# "lock"
+# "pause"
+# "reboot_hard"
+# "reboot_soft"
+# "rebuild"
+# "resume"
+# "shelve"
+# "shelve_offload"
+# "start"
+# "stop"
+# "suspend"
+# "unlock"
+# "unpause"
+# "unshelve"
 virtual_machine_action_timeout: 200
 virtual_machine_action_wait: true
 
-
 # Host aggregate details
-host_aggregate_name: "multi-arch-compute-aggregate"
-host_availability_zone_name: "multi-arch-aggregate"
+host_aggregate_name: multi-arch-compute-aggregate
+host_availability_zone_name: multi-arch-aggregate
 host_name_list: [<host1>, <host2>, <host3>]
 # Examples:
 # host_name_list: ["xcloud8", "xcloud7", "xcloud10"]

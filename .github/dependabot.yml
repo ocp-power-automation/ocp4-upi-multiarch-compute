@@ -1,9 +1,10 @@
+---
 version: 2
 updates:
-  - package-ecosystem: "pip" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: pip # See documentation for possible values
+    directory: / # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: weekly
     labels:
-      - "dependencies"
-      - "skip-changelog"
+      - dependencies
+      - skip-changelog
