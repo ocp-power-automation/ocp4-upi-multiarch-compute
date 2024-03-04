@@ -1,0 +1,28 @@
+---
+- name: Update the Chrony config based on input subnet/s information
+  hosts: all
+  vars_files:
+    - ../vars/main.yml
+
+  tasks:
+
+  - name: Print the supplied subnets
+    ansible.builtin.debug:
+      msg: "{{ item }}"
+    loop: "{{ subnets }}"
+
+  - name: Backup the prior Chrony configuration
+    shell:
+      cmd: |
+        mv /etc/chrony.conf.backup /etc/chrony.conf.backup-$(date +%s) || true
+        cp -f /etc/chrony.conf /etc/chrony.conf.backup
+
+  - name: Conditionally add allow subnet in chrony.conf [If supplied subnet list != ""]
+    include_tasks: update-chrony-subnet.yml
+    loop: "{{ subnets }}"
+    when: (item | length) != 0
+
+  - name: Restart chronyd.service
+    ansible.builtin.systemd_service:
+      name: chronyd.service
+      state: restarted
