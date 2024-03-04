@@ -61,8 +61,8 @@ virtual_machine_volume_size: 80
 virtual_machine_keypair_name: "<Provide the keypair name>"
 virtual_machine_network_name: "<Provide the network name>"
 virtual_machine_userdata: "#!/bin/sh\nyum -y install python3"
-#virtual_machine_userdata: "|\n#cloud-config\nchpasswd:\nlist: |\nubuntu:passw0rd\nexpire: False\npackages:\n- ansible\npackage_upgrade: true"
-#Examples: 
+# virtual_machine_userdata: "|\n#cloud-config\nchpasswd:\nlist: |\nubuntu:passw0rd\nexpire: False\npackages:\n- ansible\npackage_upgrade: true"
+# Examples:
 #       userdata: |
 #         #cloud-config
 #         chpasswd:
@@ -99,6 +99,6 @@ virtual_machine_action_wait: true
 # Host aggregate details
 host_aggregate_name: "multi-arch-compute-aggregate"
 host_availability_zone_name: "multi-arch-aggregate"
-host_name_list: [<host1>,<host2>,<host3>]
-#Examples:
-#host_name_list: ["xcloud8","xcloud7","xcloud10"]
+host_name_list: [<host1>, <host2>, <host3>]
+# Examples:
+# host_name_list: ["xcloud8", "xcloud7", "xcloud10"]
