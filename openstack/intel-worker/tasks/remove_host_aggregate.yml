@@ -5,10 +5,8 @@
     - ../vars/main.yml
 
   tasks:
-  - name: Remove host aggregate (host group) from openstack
-    openstack.cloud.host_aggregate:
-      cloud: openstack
-      state: absent
-      name: "{{ host_aggregate_name }}"
-       
-      
+    - name: Remove host aggregate (host group) from openstack
+      openstack.cloud.host_aggregate:
+        cloud: openstack
+        state: absent
+        name: "{{ host_aggregate_name }}"
