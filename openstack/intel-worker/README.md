@@ -56,5 +56,10 @@ The task patches the ingress to run on the primary architecture of the cluster. 
 
 ### tasks/update-chrony-configuration.yml
 
-The task updates the chrony.cfg based on subnet list on Bastion.
+The task updates the chrony.cfg based on retrieved subnet list on Bastion.
+The chrony.cfg is backed up to `/etc/chrony.conf.backup`.
+
+### tasks/update-chrony-configuration-in.yml
+
+The task updates the chrony.cfg based on input subnet list on Bastion.
 The chrony.cfg is backed up to `/etc/chrony.conf.backup`.
