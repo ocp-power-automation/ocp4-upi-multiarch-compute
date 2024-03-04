@@ -1,0 +1,18 @@
+---
+- name: Conditionally update allow subnet for chrony.conf
+  shell:
+    grep '^allow {{item}}$' /etc/chrony.conf
+  register: result
+  failed_when: result.rc != 0 and result.rc != 1
+
+- name: Reporting if this is matched
+  ansible.builtin.debug:
+    var: result.rc
+
+- name: Update the chrony config
+  ansible.builtin.replace:
+    path: /etc/chrony.conf
+    regexp: "# Allow NTP client access from local network.\n"
+    replace: "# Allow NTP client access from local network.\nallow {{ item }}\n"
+  when: result.stdout == ""
+
