@@ -2,6 +2,9 @@
 
 The [`ocp4-upi-multiarch-compute` project](https://github.com/ocp-power-automation/ocp4-upi-multiarch-compute) provides code to facilitate post installation additions of OpenShift Container Platform (OCP) 4.x compute workers on a variety of platforms.
 
+## Documentation
+- [Multi-Architecture Compute: Supporting Architecture Specific Operating System and Kernel Parameters](https://community.ibm.com/community/user/powerdeveloper/blogs/chandan-abhyankar/2024/03/06/multi-architecture-compute-supporting-architecture) - isolating multi-arch parameters.
+
 ## Design
 
 This code is designed to be modular. The code base favors Ansible, however does accept code in shell and hcl.
