@@ -2,7 +2,7 @@
 - name: Create RHCHOS image
   hosts: all
   roles:
-    - rhcos-image-create
+    - rhcosImage-create
 
 - name: Intel worker flavor create
   roles:
