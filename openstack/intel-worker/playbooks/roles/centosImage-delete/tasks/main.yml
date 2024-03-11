@@ -1,0 +1,17 @@
+---
+- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
+  hosts: all
+  vars_files:
+    - ../../../../vars/main.yml
+
+  tasks:
+    - name: Remove Centos images to openstack.
+      openstack.cloud.image:
+        cloud: openstack
+        state: absent
+        name: "{{ image_name_centos }}"
+        disk_format: "{{ image_disk_format_centos }}"
+        is_public: "{{ image_is_public_centos }}"
+        properties:
+          cpu_arch: "{{ image_cpu_arch_centos }}"
+          distro: "{{ image_distro_centos }}"

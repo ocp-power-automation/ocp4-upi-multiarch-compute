@@ -1,0 +1,12 @@
+---
+- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
+  hosts: all
+  vars_files:
+    - ../../../../vars/main.yml
+
+  tasks:
+    - name: Delete server in the Multi-Arch Compute OpenStack Instance
+      openstack.cloud.server:
+        cloud: openstack
+        state: absent
+        name: "{{ virtual_machine_name }}"

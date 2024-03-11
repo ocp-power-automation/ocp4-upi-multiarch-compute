@@ -1,0 +1,27 @@
+---
+- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
+  hosts: all
+  vars_files:
+    - ../../../../vars/main.yml
+
+  tasks:
+    - name: Download the Image from the URL and use to create image
+      ansible.builtin.get_url:
+        url: "{{ image_url_centos }}"
+        dest: "{{ image_dest_filename_centos  }}"
+        mode: '0755'
+        validate_certs: "{{ image_validate_certs_centos  }}"
+      register: image_download_stats
+
+    - name: Create/upload Centos images to openstack.
+      openstack.cloud.image:
+        cloud: openstack
+        state: present
+        name: "{{ image_name_centos_centos }}"
+        container_format: "{{ image_container_format_centos }}"
+        disk_format: "{{ image_disk_format_centos }}"
+        filename: "{{ image_dest_filename_centos }}"
+        is_public: "{{ image_is_public_centos }}"
+        properties:
+          cpu_arch: "{{ image_cpu_arch_centos }}"
+          distro: "{{ image_distro_centos }}"
