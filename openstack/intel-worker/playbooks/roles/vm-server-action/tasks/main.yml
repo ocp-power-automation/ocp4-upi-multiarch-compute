@@ -1,0 +1,14 @@
+---
+- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
+  hosts: all
+  vars_files:
+    - ../../../../vars/main.yml
+
+  tasks:
+    - name: Virtual machine action like start/stop/restart etc in the Multi-Arch Compute OpenStack
+      openstack.cloud.server_action:
+        cloud: openstack
+        action: "{{ virtual_machine_server_action }}"
+        server: "{{ virtual_machine_name }}"
+        timeout: "{{ virtual_machine_action_timeout }}"
+        wait: "{{ virtual_machine_action_wait }}"

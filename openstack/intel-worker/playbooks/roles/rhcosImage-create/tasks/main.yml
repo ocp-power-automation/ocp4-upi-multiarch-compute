@@ -1,0 +1,27 @@
+---
+- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
+  hosts: all
+  vars_files:
+    - ../../../../vars/main.yml
+
+  tasks:
+    - name: "Download the Image from the URL and use to create image"
+      ansible.builtin.get_url:
+        url: "{{ image_url_rhcos }}"
+        dest: "{{ image_dest_filename_rhcos }}"
+        mode: '0755'
+        validate_certs: "{{ image_validate_certs_rhcos }}"
+      register: image_download_stats
+
+    - name: Create/upload RHCOS images to openstack.
+      openstack.cloud.image:
+        cloud: openstack
+        state: present
+        name: "{{ image_name_rhcos }}"
+        container_format: "{{ image_container_format_rhcos }}"
+        disk_format: "{{ image_disk_format_rhcos }}"
+        filename: "{{ image_dest_filename_rhcos }}"
+        is_public: "{{ image_is_public_rhcos }}"
+        properties:
+          cpu_arch: "{{ image_cpu_arch_rhcos }}"
+          distro: "{{ image_distro_rhcos }}"
