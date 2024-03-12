@@ -1,0 +1,7 @@
+---
+# Image details Rhcos
+image_name_rhcos: RHCOS_img
+image_container_format_rhcos: bare
+image_disk_format_rhcos: qcow2
+image_cpu_arch_rhcos: x86_64
+image_distro_rhcos: rhel

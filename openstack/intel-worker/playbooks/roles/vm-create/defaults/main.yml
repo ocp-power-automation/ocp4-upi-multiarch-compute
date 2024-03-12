@@ -1,0 +1,23 @@
+---
+# Virtual_machine details
+virtual_machine_name: rdr-mac-worker
+virtual_machine_region_name: RegionOne
+vitrual_machine_availability_zone: <provide the availability_zone name>
+virtual_machine_image_name: <Provide the image name>
+virtual_machine_flavor: <Provide the flavor name>
+virtual_machine_volume_size: 80
+virtual_machine_keypair_name: <Provide the keypair name>
+virtual_machine_network_name: <Provide the network name>
+virtual_machine_userdata: "#!/bin/sh\nyum -y install python3"
+# virtual_machine_userdata: "|\n#cloud-config\nchpasswd:\nlist: |\nubuntu:passw0rd\nexpire: False\npackages:\n- ansible\npackage_upgrade: true"
+# Examples:
+#       userdata: |
+#         #cloud-config
+#         chpasswd:
+#           list: |
+#             ubuntu:{{ default_password }}
+#           expire: False
+#         packages:
+#           - ansible
+#         package_upgrade: true
+virtual_machine_timeout: 300

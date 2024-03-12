@@ -1,25 +1,27 @@
 ---
-- name: Create RHCHOS image
+- name: OpenStack worker node configuration Tasks
   hosts: all
-  roles:
-    - rhcos-image-create
+  tasks:
+    - name: Create RHCHOS image
+      roles:
+        - rhcosImage-create
 
-- name: Intel worker flavor create
-  roles:
-    - flavor-create
+    - name: Intel worker flavor create
+      roles:
+        - flavor-create
 
-- name: Intel worker vitrual_machine create
-  roles:
-    - vm-create
+    - name: Intel worker vitrual_machine create
+      roles:
+        - vm-create
 
-- name: Intel worker vitrual_machine create
-  roles:
-    - vm-server-action
-  vars:
-    virtual_machine_server_action: "stop"
+    - name: Intel worker vitrual_machine create
+      roles:
+        - vm-server-action
+      vars:
+        virtual_machine_server_action: stop
 
-- name: Intel worker vitrual_machine create
-  roles:
-    - vm-server-action
-  vars:
-    virtual_machine_server_action: "start"
+    - name: Intel worker vitrual_machine create
+      roles:
+        - vm-server-action
+      vars:
+        virtual_machine_server_action: start

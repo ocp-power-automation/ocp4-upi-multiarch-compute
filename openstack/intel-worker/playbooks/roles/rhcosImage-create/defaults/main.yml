@@ -1,0 +1,11 @@
+---
+# Image details Rhcos
+image_name_rhcos: RHCOS_img
+image_container_format_rhcos: bare
+image_disk_format_rhcos: qcow2
+image_dest_filename_rhcos: /tmp/rhcos-openstack.x86_64.qcow2.gz
+image_is_public_rhcos: true
+image_url_rhcos: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/latest/rhcos-openstack.x86_64.qcow2.gz
+image_cpu_arch_rhcos: x86_64
+image_distro_rhcos: rhel
+image_validate_certs_rhcos: false
