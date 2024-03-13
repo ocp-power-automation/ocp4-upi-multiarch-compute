@@ -1,23 +1,17 @@
 ---
 # file: intel-worker-playbook.yml
 
-- name: OpenStack worker node configuration Tasks (i.e. Create worker.ign, Upload RHCOS Image, Create Customization Script, Create Instance etc)
-  hosts: all
-  vars_files:
-    - ../../../../vars/main.yml
-
-  tasks:
-    - name: Create server in the Multi-Arch Compute OpenStack Instance
-      openstack.cloud.server:
-        cloud: openstack
-        state: present
-        name: "{{ virtual_machine_name }}"
-        region_name: "{{ virtual_machine_region_name }}"
-        availability_zone: "{{ vitrual_machine_availability_zone }}"
-        image: "{{ virtual_machine_image_name }}"
-        flavor: "{{ virtual_machine_flavor }}"
-        volume_size: "{{ virtual_machine_volume_size }}"
-        key_name: "{{ virtual_machine_keypair_name }}"
-        network: "{{ virtual_machine_network_name }}"
-        userdata: "{{ virtual_machine_userdata }}"
-        timeout: "{{ virtual_machine_timeout }}"
+- name: Create server in the Multi-Arch Compute OpenStack Instance
+  openstack.cloud.server:
+    cloud: openstack
+    state: present
+    name: "{{ virtual_machine_name }}"
+    region_name: "{{ virtual_machine_region_name }}"
+    availability_zone: "{{ vitrual_machine_availability_zone }}"
+    image: "{{ virtual_machine_image_name }}"
+    flavor: "{{ virtual_machine_flavor }}"
+    volume_size: "{{ virtual_machine_volume_size }}"
+    key_name: "{{ virtual_machine_keypair_name }}"
+    network: "{{ virtual_machine_network_name }}"
+    userdata: "{{ virtual_machine_userdata }}"
+    timeout: "{{ virtual_machine_timeout }}"

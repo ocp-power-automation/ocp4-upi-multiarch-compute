@@ -1,0 +1,9 @@
+---
+
+# Image details centos
+image_name_centos: Centos9_img
+image_container_format_centos: bare
+image_disk_format_centos: qcow2
+image_is_public_centos: true
+image_cpu_arch_centos: x86_64
+image_distro_centos: rhel

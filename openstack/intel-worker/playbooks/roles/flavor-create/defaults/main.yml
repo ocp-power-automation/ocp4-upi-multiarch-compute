@@ -1,0 +1,8 @@
+---
+# Custom flavor details
+custom_flavor_name: rdr_mac_8vcpu_16ram
+custom_flavor_ram: 16
+custom_flavor_vcpus: 8
+custom_flavor_disk: 80
+custom_flavor_ephemeral: 80
+custom_flavor_description: custom flavour for mac intel worker 8 vcpu and 16gb ram
