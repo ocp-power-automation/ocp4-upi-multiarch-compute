@@ -1,0 +1,17 @@
+---
+# file: intel-worker-playbook.yml
+
+- name: Create server in the Multi-Arch Compute OpenStack Instance
+  openstack.cloud.server:
+    cloud: openstack
+    state: present
+    name: "{{ virtual_machine_create_name }}"
+    region_name: "{{ virtual_machine_create_region_name }}"
+    availability_zone: "{{ vitrual_machine_create_availability_zone }}"
+    image: "{{ virtual_machine_create_image_name }}"
+    flavor: "{{ virtual_machine_create_flavor }}"
+    volume_size: "{{ virtual_machine_create_volume_size }}"
+    key_name: "{{ virtual_machine_create_keypair_name }}"
+    network: "{{ virtual_machine_create_network_name }}"
+    userdata: "{{ virtual_machine_create_userdata }}"
+    timeout: "{{ virtual_machine_create_timeout }}"

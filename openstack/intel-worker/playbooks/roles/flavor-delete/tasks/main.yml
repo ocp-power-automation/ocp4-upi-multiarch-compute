@@ -1,6 +1,0 @@
----
-- name: Remove flavor from openstack
-  openstack.cloud.compute_flavor:
-    cloud: openstack
-    state: absent
-    name: "{{ custom_flavor_name }}"

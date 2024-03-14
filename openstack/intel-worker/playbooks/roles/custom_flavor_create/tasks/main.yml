@@ -1,0 +1,11 @@
+---
+- name: Create flavor to openstack
+  openstack.cloud.compute_flavor:
+    cloud: openstack
+    state: present
+    name: "{{ custom_flavor_create_name }}"
+    ram: "{{ custom_flavor_create_ram }}"
+    vcpus: "{{ custom_flavor_create_vcpus }}"
+    disk: "{{ custom_flavor_create_disk }}"
+    ephemeral: "{{ custom_flavor_create_ephemeral }}"
+    description: "{{ custom_flavor_create_description }}"

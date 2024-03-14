@@ -1,0 +1,21 @@
+---
+- name: Download the Image from the URL and use to create image
+  ansible.builtin.get_url:
+    url: "{{ centos_create_image_url }}"
+    dest: "{{ centos_create_image_dest_filename }}"
+    mode: "0755"
+    validate_certs: "{{ centos_create_image_validate_certs }}"
+  register: image_download_stats
+
+- name: Create/upload Centos images to openstack.
+  openstack.cloud.image:
+    cloud: openstack
+    state: present
+    name: "{{ centos_create_image_name }}"
+    container_format: "{{ centos_create_image_container_format }}"
+    disk_format: "{{ centos_create_image_disk_format }}"
+    filename: "{{ centos_create_image_dest_filename }}"
+    is_public: "{{ centos_create_image_is_public }}"
+    properties:
+      cpu_arch: "{{ centos_create_image_cpu_arch }}"
+      distro: "{{ centos_create_image_distro }}"

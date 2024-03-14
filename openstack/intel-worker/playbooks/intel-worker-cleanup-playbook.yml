@@ -1,16 +1,15 @@
 ---
-- name: OpenStack worker node configuration Tasks
+- name: Intel worker vitrual_machine delete
   hosts: all
-  tasks:
-    - name: Intel worker vitrual_machine delete
-      roles:
-        - vm-delete
+  roles:
+    - virtual_machine_delete
 
-    - name: Intel worker flavor create
-      roles:
-        - flavor-delete
+- name: Intel worker flavor create
+  hosts: all
+  roles:
+    - custom_flavor_delete
 
-    - name: Create RHCHOS image
-      hosts: all
-      roles:
-        - rhcosImage-delete
+- name: Create RHCHOS image
+  hosts: all
+  roles:
+    - rhcos_delete_image
