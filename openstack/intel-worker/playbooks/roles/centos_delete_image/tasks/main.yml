@@ -1,0 +1,6 @@
+---
+- name: Remove Centos images to openstack.
+  openstack.cloud.image:
+    cloud: openstack
+    state: absent
+    name: "{{ centos_delete_image_name }}"

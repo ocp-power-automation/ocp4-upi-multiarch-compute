@@ -1,0 +1,6 @@
+---
+- name: Delete server in the Multi-Arch Compute OpenStack Instance
+  openstack.cloud.server:
+    cloud: openstack
+    state: absent
+    name: "{{ virtual_machine_delete_name }}"

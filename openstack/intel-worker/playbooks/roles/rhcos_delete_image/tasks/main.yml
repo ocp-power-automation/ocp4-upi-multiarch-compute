@@ -1,0 +1,6 @@
+---
+- name: Remove RHCOS images from openstack.
+  openstack.cloud.image:
+    cloud: openstack
+    state: absent
+    name: "{{ rhcos_create_image_name }}"

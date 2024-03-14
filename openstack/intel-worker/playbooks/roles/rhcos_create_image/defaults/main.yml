@@ -1,0 +1,11 @@
+---
+# Image details Rhcos
+rhcos_create_image_name: RHCOS_img
+rhcos_create_image_container_format: bare
+rhcos_create_image_disk_format: qcow2
+rhcos_create_image_dest_filename: /tmp/rhcos-openstack.x86_64.qcow2.gz
+rhcos_create_image_is_public: true
+rhcos_create_image_url: https://mirror.openshift.com/pub/openshift-v4/x86_64/dependencies/rhcos/latest/rhcos-openstack.x86_64.qcow2.gz
+rhcos_create_image_cpu_arch: x86_64
+rhcos_create_image_distro: rhel
+rhcos_create_image_validate_certs: false

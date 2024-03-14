@@ -1,0 +1,12 @@
+---
+
+# Image details centos
+centos_create_image_name: Centos9_img
+centos_create_image_container_format: bare
+centos_create_image_disk_format: qcow2
+centos_create_image_dest_filename: /tmp/CentOS-Stream-GenericCloud-9-20230327.0.x86_64.qcow2
+centos_create_image_is_public: true
+centos_create_image_url: https://cloud.centos.org/centos/9-stream/x86_64/images/CentOS-Stream-GenericCloud-9-20230327.0.x86_64.qcow2
+centos_create_image_cpu_arch: x86_64
+centos_create_image_distro: rhel
+centos_create_image_validate_certs: false

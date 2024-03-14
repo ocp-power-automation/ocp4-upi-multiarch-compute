@@ -1,0 +1,9 @@
+---
+- name: Create host aggregate (host group) to openstack
+  openstack.cloud.host_aggregate:
+    cloud: openstack
+    state: present
+    name: "{{ host_aggregate_create_name }}"
+    hosts: "{{ host_aggregate_create_name_list }}"
+    metadata:
+      availability_zone: "{{ host_aggregate_create_availability_zone_name }}"

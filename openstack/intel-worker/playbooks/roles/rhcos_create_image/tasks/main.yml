@@ -1,0 +1,21 @@
+---
+- name: Download the Image from the URL and use to create image
+  ansible.builtin.get_url:
+    url: "{{ rhcos_create_image_url }}"
+    dest: "{{ rhcos_create_image_dest_filename }}"
+    mode: "0755"
+    validate_certs: "{{ rhcos_create_image_validate_certs }}"
+  register: image_download_stats
+
+- name: Create/upload RHCOS images to openstack.
+  openstack.cloud.image:
+    cloud: openstack
+    state: present
+    name: "{{ rhcos_create_image_name_rhcos }}"
+    container_format: "{{ rhcos_create_image_container_format }}"
+    disk_format: "{{ rhcos_create_image_disk_format }}"
+    filename: "{{ rhcos_create_image_dest_filename }}"
+    is_public: "{{ rhcos_create_image_is_public }}"
+    properties:
+      cpu_arch: "{{ rhcos_create_image_cpu_arch }}"
+      distro: "{{ rhcos_create_image_distro }}"
