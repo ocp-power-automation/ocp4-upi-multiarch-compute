@@ -7,11 +7,11 @@
     validate_certs: "{{ rhcos_create_image_validate_certs }}"
   register: image_download_stats
 
-- name: Create/upload RHCOS images to openstack.
+- name: Create or upload RHCOS images to openstack.
   openstack.cloud.image:
     cloud: openstack
     state: present
-    name: "{{ rhcos_create_image_name_rhcos }}"
+    name: "{{ rhcos_create_image_name }}"
     container_format: "{{ rhcos_create_image_container_format }}"
     disk_format: "{{ rhcos_create_image_disk_format }}"
     filename: "{{ rhcos_create_image_dest_filename }}"

@@ -1,6 +1,7 @@
 ---
 # Virtual machine action
-virtual_machine_action_name: start
+virtual_machine_action_name: stop
+virtual_machine_action_vmname: rdr-mac-worker
 # server action list
 # "lock"
 # "pause"

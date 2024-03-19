@@ -7,7 +7,7 @@
     state: present
     name: "{{ virtual_machine_create_name }}"
     region_name: "{{ virtual_machine_create_region_name }}"
-    availability_zone: "{{ vitrual_machine_create_availability_zone }}"
+    availability_zone: "{{ virtual_machine_create_availability_zone }}"
     image: "{{ virtual_machine_create_image_name }}"
     flavor: "{{ virtual_machine_create_flavor }}"
     volume_size: "{{ virtual_machine_create_volume_size }}"
