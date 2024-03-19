@@ -1,15 +1,15 @@
 ---
 - name: Intel worker vitrual_machine delete
-  hosts: all
+  hosts: localhost
   roles:
     - virtual_machine_delete
 
 - name: Intel worker flavor create
-  hosts: all
+  hosts: localhost
   roles:
     - custom_flavor_delete
 
 - name: Create RHCHOS image
-  hosts: all
+  hosts: localhost
   roles:
     - rhcos_delete_image

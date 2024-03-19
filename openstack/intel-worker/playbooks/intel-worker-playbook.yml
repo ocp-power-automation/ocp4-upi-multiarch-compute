@@ -1,28 +1,28 @@
 ---
 - name: Create RHCHOS image
-  hosts: all
+  hosts: localhost
   roles:
     - rhcos_create_image
 
 - name: Intel worker flavor create
-  hosts: all
+  hosts: localhost
   roles:
     - custom_flavor_create
 
 - name: Intel worker vitrual_machine create
-  hosts: all
+  hosts: localhost
   roles:
     - virtual_machine_create
 
 - name: Intel worker vitrual_machine create
-  hosts: all
+  hosts: localhost
   roles:
     - virtual_machine_action
   vars:
     virtual_machine_action_name: stop
 
 - name: Intel worker vitrual_machine create
-  hosts: all
+  hosts: localhost
   roles:
     - virtual_machine_action
   vars:
