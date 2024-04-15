@@ -1,5 +1,8 @@
 ---
 # file: intel-worker-playbook.yml
+- name: Add identity resources
+  ansible.builtin.include_tasks:
+    file: ignition.yml
 
 - name: Create server in the Multi-Arch Compute OpenStack Instance
   openstack.cloud.server:
