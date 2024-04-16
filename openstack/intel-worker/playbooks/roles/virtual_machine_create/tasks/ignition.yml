@@ -1,7 +1,7 @@
 ---
 - name: Create worker.ign and store it to /var/www/html/ignition/
   ansible.builtin.get_url:
-    url: https://{{ bastion_ip }}:22623/config/worker
+    url: https://{{ virtual_machine_create_bastion_ip }}:22623/config/worker
     validate_certs: false
     dest: /var/www/html/ignition/worker-amd64.ign
     mode: "0644"
@@ -14,8 +14,8 @@
 
 - name: Set the variables (To be used in Customization Script)
   ansible.builtin.set_fact:
-    worker_hostname_encoded: "{{ worker_hostname | b64encode }}"
-    dns_none_encoded: "{{ dns_none_conf | b64encode }}"
+    worker_hostname_encoded: "{{ virtual_machine_create_worker_hostname | b64encode }}"
+    dns_none_encoded: "{{ virtual_machine_create_dns_none_conf | b64encode }}"
     etc_resolve_encoded: "{{ lookup('template', 'resolv.conf.j2') | b64encode }}"
 
 - name: Create the Intel ignition file
