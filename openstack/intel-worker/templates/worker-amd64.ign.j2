@@ -7,10 +7,10 @@
 					"source": "http://{{ bastion_ip }}:{{ http_port }}/ignition/worker-amd64.ign"
 				}
 			]
+		},
+		"timeouts": {
+			"httpTotal": 15
 		}
-	},
-	"timeouts": {
-		"httpTotal": 15
 	},
 	"storage": {
 	  "files": [
