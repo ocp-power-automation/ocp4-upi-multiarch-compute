@@ -1,6 +1,6 @@
 ---
 # Virtual_machine details
-virtual_machine_create_name: rdr-mac-worker
+virtual_machine_create_name: rdr-mac-worker-openstack
 virtual_machine_create_region_name: RegionOne
 virtual_machine_create_availability_zone: Test
 virtual_machine_create_image_name: 4df699b6-6877-4b77-9ddb-0d6dc9cefb68
@@ -9,28 +9,16 @@ virtual_machine_create_volume_size: 80
 virtual_machine_create_keypair_name: pun_keypair
 virtual_machine_create_network_name: provider
 virtual_machine_create_userdata: "{{ lookup('template', 'worker-amd64.ign.j2') }}"
-# virtual_machine_create_userdata: "{{ lookup('file', '/var/www/html/ignition/worker-amd64.ign') | string }}"
-# virtual_machine_create_userdata: "#!/bin/sh\nyum -y install python3"
-# virtual_machine_userdata: "|\n#cloud-config\nchpasswd:\nlist: |\nubuntu:passw0rd\nexpire: False\npackages:\n- ansible\npackage_upgrade: true"
-# Examples:
-#       userdata: |
-#         #cloud-config
-#         chpasswd:
-#           list: |
-#             ubuntu:{{ default_password }}
-#           expire: False
-#         packages:
-#           - ansible
-#         package_upgrade: true
 virtual_machine_create_timeout: 300
+virtual_machine_create_count: 3
 
 # Used in ignition task
-virtual_machine_create_worker_hostname: "rdr-mac"
+virtual_machine_create_worker_hostname: "rdr-mac-worker-openstack"
 virtual_machine_create_worker_hostname_encoded: ""
 virtual_machine_create_etc_resolve_encoded: ""
 virtual_machine_create_dns_none_encoded: ""
 virtual_machine_create_bastion_ip: "10.20.181.69"
-virtual_machine_create_domain_name: "rdr-mac"
+virtual_machine_create_domain_name: "rdr-mac1"
 virtual_machine_create_http_port: "8080"
 virtual_machine_create_https_port: "443"
 
