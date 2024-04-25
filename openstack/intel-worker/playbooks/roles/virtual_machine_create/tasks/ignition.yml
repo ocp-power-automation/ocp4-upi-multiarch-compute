@@ -8,6 +8,9 @@
     headers:
       Accept: application/vnd.coreos.ignition+json;version=3.4.0
 
+- name: Gather facts
+  ansible.builtin.setup:
+
 - name: Set the variables to be used during encoding the template
   ansible.builtin.set_fact:
     domain_name: "{{ ansible_facts['domain'] }}"

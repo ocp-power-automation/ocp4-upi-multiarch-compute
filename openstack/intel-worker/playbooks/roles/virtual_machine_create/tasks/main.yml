@@ -1,6 +1,6 @@
 ---
 # file: intel-worker-playbook.yml
-- name: Add identity resources
+- name: Create ignition file
   ansible.builtin.include_tasks:
     file: ignition.yml
 
@@ -18,3 +18,7 @@
     network: "{{ virtual_machine_create_network_name }}"
     userdata: "{{ virtual_machine_create_userdata }}"
     timeout: "{{ virtual_machine_create_timeout }}"
+
+- name: Get and wait for VM in active state
+  ansible.builtin.include_tasks:
+    file: get_vm.yml

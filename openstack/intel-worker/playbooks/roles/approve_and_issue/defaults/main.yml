@@ -1,0 +1,5 @@
+---
+# Approve and issue vars
+approve_and_issue_intel_count: 1
+approve_and_issue_intel_prefix: "rdr-mac"
+approve_and_issue_intel_zone: "openstack"
