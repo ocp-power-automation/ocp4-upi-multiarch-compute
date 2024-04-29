@@ -1,0 +1,12 @@
+---
+# file to add the destory worker node
+- name: Copy the destory worker node file to tmp folder
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/destroy_worker.sh"
+    dest: /tmp/destroy_worker.sh
+    mode: "0755"
+
+- name: Run the script to destory worker node
+  ansible.builtin.script:
+    cmd: /tmp/destroy_worker.sh "{{ destroy_worker_intel_count }}" "{{ destroy_worker_intel_prefix }}" "{{ destroy_worker_intel_zone }}"
+    register: destroy_node_ouptut

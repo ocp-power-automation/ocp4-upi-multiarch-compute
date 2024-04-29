@@ -1,0 +1,5 @@
+---
+# Approve and issue vars
+destroy_worker_intel_count: 3
+destroy_worker_intel_prefix: "rdr-mac"
+destroy_worker_intel_zone: "openstack"

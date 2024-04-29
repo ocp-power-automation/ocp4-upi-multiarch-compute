@@ -12,12 +12,12 @@
 - name: Loop over virtual machine create role in the playbook with dynamic variable names
   hosts: localhost
   vars:
-    iterations: "{{ virtual_machine_create_count }}"  # Number of iterations for the loop
+    iterations: 3  # Number of iterations for the loop
   tasks:
     - name: Virtual machine create role in loop
       ansible.builtin.include_role:
         name: virtual_machine_create
-      loop: "{{ range(1, iterations + 1) | list }}"
+      loop: "{{ range(0, iterations) | list }}"
       loop_control:
         loop_var: iteration
       vars:
@@ -28,6 +28,8 @@
   hosts: localhost
   roles:
     - approve_and_issue
+  vars:
+    approve_and_issue_intel_count: 3
 
 - name: Intel worker vitrual_machine create
   hosts: localhost

@@ -1,8 +1,24 @@
 ---
-- name: Intel worker vitrual_machine delete
+- name: Destory intel worker node
   hosts: localhost
   roles:
-    - virtual_machine_delete
+    - destroy_worker
+  vars:
+    destroy_worker_intel_count: 3
+
+- name: Loop over virtual machine delete role in the playbook with dynamic variable names
+  hosts: localhost
+  vars:
+    iterations: 3  # Number of iterations for the loop
+  tasks:
+    - name: Virtual machine delete role in loop
+      ansible.builtin.include_role:
+        name: virtual_machine_delete
+      loop: "{{ range(0, iterations) | list }}"
+      loop_control:
+        loop_var: iteration
+      vars:
+        virtual_machine_delete_name: "rdr-mac-worker-openstack-{{ iteration }}"
 
 - name: Intel worker flavor create
   hosts: localhost
