@@ -1,0 +1,5 @@
+---
+# Approve and issue vars
+csr_approve_intel_count: 3
+csr_approve_intel_prefix: "rdr-mac"
+csr_approve_intel_zone: "openstack"

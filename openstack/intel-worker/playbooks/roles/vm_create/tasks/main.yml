@@ -1,0 +1,24 @@
+---
+# file: intel-worker-playbook.yml
+- name: Create ignition file
+  ansible.builtin.include_tasks:
+    file: ignition.yml
+
+- name: Create server in the Multi-Arch Compute OpenStack Instance
+  openstack.cloud.server:
+    cloud: openstack
+    state: present
+    name: "{{ vm_create_name }}"
+    region_name: "{{ vm_create_region_name }}"
+    availability_zone: "{{ vm_create_availability_zone }}"
+    image: "{{ vm_create_image_name }}"
+    flavor: "{{ vm_create_flavor }}"
+    volume_size: "{{ vm_create_volume_size }}"
+    key_name: "{{ vm_create_keypair_name }}"
+    network: "{{ vm_create_network_name }}"
+    userdata: "{{ vm_create_userdata }}"
+    timeout: "{{ vm_create_timeout }}"
+
+- name: Get and wait for VM in active state
+  ansible.builtin.include_tasks:
+    file: get_vm.yml

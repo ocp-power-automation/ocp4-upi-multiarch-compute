@@ -1,0 +1,8 @@
+---
+- name: Virtual machine action like start/stop/restart etc in the Multi-Arch Compute OpenStack
+  openstack.cloud.server_action:
+    cloud: openstack
+    action: "{{ vm_action_name }}"
+    server: "{{ vm_action_vmname }}"
+    timeout: "{{ vm_action_timeout }}"
+    wait: "{{ vm_action_wait }}"
