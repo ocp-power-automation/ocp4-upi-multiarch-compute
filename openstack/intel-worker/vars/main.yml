@@ -91,8 +91,8 @@ virtual_machine_server_action: start
 # "unlock"
 # "unpause"
 # "unshelve"
-virtual_machine_action_timeout: 200
-virtual_machine_action_wait: true
+vm_action_timeout: 200
+vm_action_wait: true
 
 # Host aggregate details
 host_aggregate_name: multi-arch-compute-aggregate

@@ -4,7 +4,7 @@
 		"config": {
 			"merge": [
 				{
-					"source": "http://{{ virtual_machine_create_bastion_ip }}:{{ virtual_machine_create_http_port }}/ignition/worker-amd64.ign"
+					"source": "http://{{ vm_create_bastion_ip }}:{{ vm_create_http_port }}/ignition/worker-amd64.ign"
 				}
 			]
 		}
@@ -19,7 +19,7 @@
 				"path": "/etc/hostname",
 				"user": {},
 				"contents": {
-					"source": "data:text/plain;base64,{{ virtual_machine_create_worker_hostname_encoded }}",
+					"source": "data:text/plain;base64,{{ vm_create_worker_hostname_encoded }}",
 					"verification": {}
 				},
 				"mode": 420
@@ -29,7 +29,7 @@
 				"path": "/etc/resolv.conf",
 				"user": {},
 				"contents": {
-					"source": "data:text/plain;base64,{{ virtual_machine_create_etc_resolve_encoded }}",
+					"source": "data:text/plain;base64,{{ vm_create_etc_resolve_encoded }}",
 					"verification": {}
 				},
 				"mode": 420
@@ -39,7 +39,7 @@
 				"path": "/etc/NetworkManager/conf.d/90-dns-none.conf",
 				"user": {},
 				"contents": {
-					"source": "data:text/plain;base64,{{ virtual_machine_create_dns_none_encoded }}",
+					"source": "data:text/plain;base64,{{ vm_create_dns_none_encoded }}",
 					"verification": {}
 				},
 				"mode": 420

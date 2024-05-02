@@ -3,4 +3,4 @@
   openstack.cloud.server:
     cloud: openstack
     state: absent
-    name: "{{ virtual_machine_delete_name }}"
+    name: "{{ vm_delete_name }}"

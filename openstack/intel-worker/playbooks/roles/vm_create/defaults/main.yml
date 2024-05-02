@@ -1,0 +1,28 @@
+---
+# Virtual_machine details
+vm_create_name: rdr-mac-worker-openstack
+vm_create_region_name: RegionOne
+vm_create_availability_zone: Test
+vm_create_image_name: 4df699b6-6877-4b77-9ddb-0d6dc9cefb68
+vm_create_flavor: "m1.medium"
+vm_create_volume_size: 80
+vm_create_keypair_name: pun_keypair
+vm_create_network_name: provider
+vm_create_userdata: "{{ lookup('template', 'worker-amd64.ign.j2') }}"
+vm_create_timeout: 300
+vm_create_count: 3
+
+# Used in ignition task
+vm_create_worker_hostname: "rdr-mac-worker-openstack"
+vm_create_worker_hostname_encoded: ""
+vm_create_etc_resolve_encoded: ""
+vm_create_dns_none_encoded: ""
+vm_create_bastion_ip: "10.20.181.69"
+vm_create_domain_name: "rdr-mac1"
+vm_create_http_port: "8080"
+vm_create_https_port: "443"
+
+# Ignition Files
+vm_create_dns_none_conf: |-
+  [main]
+  dns=none

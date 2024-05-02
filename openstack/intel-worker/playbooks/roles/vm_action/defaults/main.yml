@@ -1,7 +1,7 @@
 ---
 # Virtual machine action
-virtual_machine_action_name: stop
-virtual_machine_action_vmname: rdr-mac-worker
+vm_action_name: stop
+vm_action_vmname: rdr-mac-worker
 # server action list
 # "lock"
 # "pause"
@@ -17,5 +17,5 @@ virtual_machine_action_vmname: rdr-mac-worker
 # "unlock"
 # "unpause"
 # "unshelve"
-virtual_machine_action_timeout: 200
-virtual_machine_action_wait: true
+vm_action_timeout: 200
+vm_action_wait: true

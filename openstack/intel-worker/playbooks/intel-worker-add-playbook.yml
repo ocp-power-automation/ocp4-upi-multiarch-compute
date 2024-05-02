@@ -16,31 +16,31 @@
   tasks:
     - name: Virtual machine create role in loop
       ansible.builtin.include_role:
-        name: virtual_machine_create
+        name: vm_create
       loop: "{{ range(0, iterations) | list }}"
       loop_control:
         loop_var: iteration
       vars:
-        virtual_machine_create_name: "rdr-mac-worker-openstack-{{ iteration }}"
-        virtual_machine_create_worker_hostname: "rdr-mac-worker-openstack-{{ iteration }}"
+        vm_create_name: "rdr-mac-worker-openstack-{{ iteration }}"
+        vm_create_worker_hostname: "rdr-mac-worker-openstack-{{ iteration }}"
 
 - name: Approve and issue
   hosts: localhost
   roles:
-    - approve_and_issue
+    - csr_approve
   vars:
-    approve_and_issue_intel_count: 3
+    csr_approve_intel_count: 3
 
 - name: Intel worker vitrual_machine create
   hosts: localhost
   roles:
-    - virtual_machine_action
+    - vm_action
   vars:
-    virtual_machine_action_name: stop
+    vm_action_name: stop
 
 - name: Intel worker vitrual_machine create
   hosts: localhost
   roles:
-    - virtual_machine_action
+    - vm_action
   vars:
-    virtual_machine_action_name: start
+    vm_action_name: start

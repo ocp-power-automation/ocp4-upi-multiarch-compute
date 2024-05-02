@@ -1,0 +1,4 @@
+---
+# Virtual_machine details
+vm_delete_name: rdr-mac-worker-openstack
+vm_delete_count: 3

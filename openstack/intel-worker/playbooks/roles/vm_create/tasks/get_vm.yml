@@ -2,7 +2,7 @@
 - name: Get virtual machine info
   openstack.cloud.server_info:
     cloud: openstack
-    name: "{{ virtual_machine_create_name }}"
+    name: "{{ vm_create_name }}"
   register: vm_info
 
 - name: Print virtual machine vm_info

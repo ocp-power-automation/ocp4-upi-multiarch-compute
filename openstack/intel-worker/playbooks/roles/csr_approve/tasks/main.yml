@@ -1,0 +1,12 @@
+---
+# file to add the approve and issue csr certificate
+- name: Copy the approve and issue file to tmp folder
+  ansible.builtin.copy:
+    src: "{{ role_path }}/files/csr_approve.sh"
+    dest: /tmp/csr_approve.sh
+    mode: "0755"
+
+- name: Run the script to approve and issue csr certificate
+  ansible.builtin.script:
+    cmd: /tmp/csr_approve.sh "{{ csr_approve_intel_count }}" "{{ csr_approve_intel_prefix }}" "{{ csr_approve_intel_zone }}"
+    register: csr_approve_output

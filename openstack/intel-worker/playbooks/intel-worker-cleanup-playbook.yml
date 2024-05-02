@@ -13,12 +13,12 @@
   tasks:
     - name: Virtual machine delete role in loop
       ansible.builtin.include_role:
-        name: virtual_machine_delete
+        name: vm_delete
       loop: "{{ range(0, iterations) | list }}"
       loop_control:
         loop_var: iteration
       vars:
-        virtual_machine_delete_name: "rdr-mac-worker-openstack-{{ iteration }}"
+        vm_delete_name: "rdr-mac-worker-openstack-{{ iteration }}"
 
 - name: Intel worker flavor create
   hosts: localhost
