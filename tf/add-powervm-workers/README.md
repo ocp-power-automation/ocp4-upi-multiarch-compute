@@ -2,7 +2,7 @@
 
 User need to uopdate required vales in data/vars.tfvars file such as username and password of IBM intranet credentials to get access to the PowerVC.
 ```
-auth_url                    = "https://scnlonprema.pokprv.stglabs.ibm.com:5000/v3/"
+auth_url                    = "https://host.net:5000/v3/"
 user_name                   = "***@us.ibm.com"
 password                    = "***"
 ```
