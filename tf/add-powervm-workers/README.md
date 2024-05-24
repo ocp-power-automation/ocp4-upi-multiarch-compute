@@ -10,11 +10,11 @@ password                    = "***"
 ### Use Terraform command to plan and apply .
 
   ```
-  terraform plan -var-file=data/vars.tfvars
+  terraform plan -var-file=data/powervm.tfvars
   ```
 
   ```
-  terraform apply -var-file=data/vars.tfvars
+  terraform apply -var-file=data/powervm.tfvars
   ```
 
 ### Configure the DHCP and restart the dhcpd service.
