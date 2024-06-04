@@ -7,6 +7,8 @@ user_name                   = "***@us.ibm.com"
 password                    = "***"
 ```
 
+If you are using a selinux enabled bastion, please set `chcon -R -t httpd_sys_content_t /var/www/html/ignition/worker.ign` where worker.ign is the file for the latest ignition.
+
 ### Use Terraform command to plan and apply .
 
   ```
