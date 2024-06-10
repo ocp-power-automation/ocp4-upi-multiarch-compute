@@ -41,12 +41,8 @@ Get the MAC Address and IP Address of the VM created on PowerVC. Update /etc/dhc
   oc adm certificate approve <certificate-name>
   ```
 
-
-
 ## Troubleshooting
-
-
-### If Ignition failed.
+### Ignition failed.
 
 * If ignition failed, Once you have the VM console, run the following commands:
 ```
@@ -65,12 +61,9 @@ ignition --platform openstack -stage fetch -log-to-stdout
 sudo journalctl -u kubelet
 ```
 * Ignition file properties should has `/etc/hostname` , `/etc/resolv.conf`, `passwd` section with proper values.
-
-
-
-### Even after the ignition was sucessful , CSR didn't appear 
+### Ignition successful, CSR does not show
 
 * If you see the error with `no such host` error in the `sudo journalctl -u kubelet` add the DNS service points to the right host/ip of the ignition IP.
-* Using the dns service [link](https://cloud.ibm.com/internet-svcs/crn%3Av1%3Abluemix%3Apublic%3Ainternet-svcs%3Aglobal%3Aa%2F65b64c1f1c29460e8c2e4bbfbd893c2c%3A60ee139c-1c18-4728-a035-e34533b78a8b%3A%3A?paneId=reliability), Add a new record to resolve the IP which points to domain.
+* Using the IBM Cloud Internet Service or IBM Cloud DNS Service [link](https://cloud.ibm.com/internet-svcs/), add a new record to resolve the IP which points to domain.
 * Reboot the worker node to flush the dns cache to resolve the DNS and CSR will appear for the approval. once CSR are approved worker will get added to cluster.
 
