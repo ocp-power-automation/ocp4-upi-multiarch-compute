@@ -4,19 +4,10 @@
     cloud: openstack
     name: "{{ vm_create_name }}"
   register: vm_info
+  until: vm_info.servers[0].status == "ACTIVE"
+  retries: 60
+  delay: 10
 
 - name: Print virtual machine vm_info
   ansible.builtin.debug:
     var: vm_info
-
-- name: Wait for instance to become active
-  ansible.builtin.wait_for:
-    timeout: 300
-    delay: 5
-    host: "{{ vm_info.servers[0].name }}"
-    port: "{{ vm_info.servers[0].addresses['private'].ipv4 }}"
-    state: started
-    search_regex: active
-  until: vm_info.servers[0].status == 'ACTIVE'
-  retries: 60
-  delay: 10

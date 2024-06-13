@@ -1,0 +1,14 @@
+---
+- name: Intel worker vitrual_machine create
+  hosts: localhost
+  roles:
+    - vm_action
+  vars:
+    vm_action_name: stop
+
+- name: Intel worker vitrual_machine create
+  hosts: localhost
+  roles:
+    - vm_action
+  vars:
+    vm_action_name: start

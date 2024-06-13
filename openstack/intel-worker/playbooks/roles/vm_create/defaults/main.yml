@@ -3,12 +3,12 @@
 vm_create_name: rdr-mac-worker-openstack
 vm_create_region_name: RegionOne
 vm_create_availability_zone: Test
-vm_create_image_name: 4df699b6-6877-4b77-9ddb-0d6dc9cefb68
+vm_create_image_name: d424a441-6b4c-4e22-adb7-69935b398579
 vm_create_flavor: "m1.medium"
 vm_create_volume_size: 80
 vm_create_keypair_name: pun_keypair
 vm_create_network_name: provider
-vm_create_userdata: "{{ lookup('template', 'worker-amd64.ign.j2') }}"
+vm_create_userdata: "{{ lookup('file', '/tmp/worker-amd64.ign') | string }}"
 vm_create_timeout: 300
 vm_create_count: 3
 
