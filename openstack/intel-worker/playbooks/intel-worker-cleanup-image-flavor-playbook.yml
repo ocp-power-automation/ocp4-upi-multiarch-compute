@@ -1,0 +1,10 @@
+---
+- name: Intel worker flavor create
+  hosts: localhost
+  roles:
+    - custom_flavor_delete
+
+- name: Create RHCHOS image
+  hosts: localhost
+  roles:
+    - rhcos_delete_image

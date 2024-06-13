@@ -19,13 +19,3 @@
         loop_var: iteration
       vars:
         vm_delete_name: "rdr-mac-worker-openstack-{{ iteration }}"
-
-- name: Intel worker flavor create
-  hosts: localhost
-  roles:
-    - custom_flavor_delete
-
-- name: Create RHCHOS image
-  hosts: localhost
-  roles:
-    - rhcos_delete_image

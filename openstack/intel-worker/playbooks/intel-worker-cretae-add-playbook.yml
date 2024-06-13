@@ -1,14 +1,4 @@
 ---
-- name: Create RHCHOS image
-  hosts: localhost
-  roles:
-    - rhcos_create_image
-
-- name: Intel worker flavor create
-  hosts: localhost
-  roles:
-    - custom_flavor_create
-
 - name: Loop over virtual machine create role in the playbook with dynamic variable names
   hosts: localhost
   vars:
@@ -30,17 +20,3 @@
     - csr_approve
   vars:
     csr_approve_intel_count: 3
-
-- name: Intel worker vitrual_machine create
-  hosts: localhost
-  roles:
-    - vm_action
-  vars:
-    vm_action_name: stop
-
-- name: Intel worker vitrual_machine create
-  hosts: localhost
-  roles:
-    - vm_action
-  vars:
-    vm_action_name: start
