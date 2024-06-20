@@ -1,9 +1,53 @@
 # Intel Worker Playbook: Getting Started Guide
 
-### Prerequisites:
+## Prerequisites:
 * OCP cluster has to be in `multi` payload. If its not in `multi` payload the worker will not get added to power based ocp cluster.
 * Here is the details of upgrading to multi payload [link](https://docs.openshift.com/container-platform/4.15/updating/updating_a_cluster/migrating-to-multi-payload.html#migrating-to-multi-payload)
 * ```oc adm upgrade --to-multi-arch```
+
+### Getting Started with Ansible and OpenStack
+
+1. Create a virtual environment
+
+```
+python3 -m venv $(pwd)
+```
+
+2. Activate the environemnt
+
+```
+source bin/activate
+```
+
+3. Install the openstack.cloud collection
+
+```
+ansible-galaxy collection install openstack.cloud
+```
+
+4. Install the Python Libraries
+
+```
+yum install openssl openssl-devel -y
+pip3 install -r requirements.txt
+```
+
+5. Navigate to `Application Credentials` [http://10.20.27.203/horizon/identity/application_credentials/](http://10.20.27.203/horizon/identity/application_credentials/) - Login if prompted.
+
+6. Click `Create Application Credential`
+
+7. Enter Name `automation-user-id`, where user-id is your shortname. - e.g., pkenchap.
+
+8. Select Role > Reader / Member / Admin
+
+9. Click `Create Application Credential`
+
+10. Update the clouds.yaml to the folder `/etc/openstack/`. If the openstack folder is not present, create openstack folder in `/etc/`. 
+
+    a. `application_credential_id` updated with the ID
+
+    b. `application_credential_secret` updated with the Secret
+
 
 ## Add the intel worker to power based ocp cluster 
 
