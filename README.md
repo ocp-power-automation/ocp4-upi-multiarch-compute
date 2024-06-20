@@ -5,8 +5,8 @@ The [`ocp4-upi-multiarch-compute` project](https://github.com/ocp-power-automati
 ## Documentation
 - [Multi-Architecture Compute: Supporting Architecture Specific Operating System and Kernel Parameters](https://community.ibm.com/community/user/powerdeveloper/blogs/chandan-abhyankar/2024/03/06/multi-architecture-compute-supporting-architecture) - isolating multi-arch parameters.
 
-- [Detailed steps to add intel worker nodes to Power based ocp cluster](blob/main/openstack/intel-worker/README.md)
-- [Detailed steps to add power worker nodes to Intel based ocp cluster](blob/main/tf/add-powervm-workers/README.md)
+- [Detailed steps to add intel worker nodes to Power based ocp cluster](openstack/intel-worker/README.md)
+- [Detailed steps to add power worker nodes to Intel based ocp cluster](tf/add-powervm-workers/README.md)
 
 ## Design
 
