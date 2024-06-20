@@ -1,6 +1,6 @@
 # Add PowerVM workers to Intel cluster
 
-User need to uopdate required vales in data/vars.tfvars file such as username and password of IBM intranet credentials to get access to the PowerVC.
+User need to update required vales in powervm.tfvars file such as username and password of IBM intranet credentials to get access to the PowerVC.
 ```
 auth_url                    = "https://host.net:5000/v3/"
 user_name                   = "***@us.ibm.com"
@@ -12,11 +12,11 @@ If you are using a selinux enabled bastion, please set `chcon -R -t httpd_sys_co
 ### Use Terraform command to plan and apply .
 
   ```
-  terraform plan -var-file=data/powervm.tfvars
+  terraform plan -var-file=powervm.tfvars
   ```
 
   ```
-  terraform apply -var-file=data/powervm.tfvars
+  terraform apply -var-file=powervm.tfvars
   ```
 
 ### Configure the DHCP and restart the dhcpd service.
@@ -42,6 +42,7 @@ Get the MAC Address and IP Address of the VM created on PowerVC. Update /etc/dhc
   ```
 
 ## Troubleshooting
+
 ### Ignition failed.
 
 * If ignition failed, Once you have the VM console, run the following commands:
@@ -61,6 +62,7 @@ ignition --platform openstack -stage fetch -log-to-stdout
 sudo journalctl -u kubelet
 ```
 * Ignition file properties should has `/etc/hostname` , `/etc/resolv.conf`, `passwd` section with proper values.
+
 ### Ignition successful, CSR does not show
 
 * If you see the error with `no such host` error in the `sudo journalctl -u kubelet` add the DNS service points to the right host/ip of the ignition IP.
