@@ -1,6 +1,8 @@
 # Add PowerVM workers to Intel cluster
 
 User need to update required vales in powervm.tfvars file such as username and password of IBM intranet credentials to get access to the PowerVC.
+
+*Note* It is recommended to copy the powervm.tfvars into data/ and use the data/powervm.tfvars with your terraform commands.
 ```
 auth_url                    = "https://host.net:5000/v3/"
 user_name                   = "***@us.ibm.com"
@@ -12,11 +14,11 @@ If you are using a selinux enabled bastion, please set `chcon -R -t httpd_sys_co
 ### Use Terraform command to plan and apply .
 
   ```
-  terraform plan -var-file=powervm.tfvars
+  terraform plan -var-file=data/powervm.tfvars
   ```
 
   ```
-  terraform apply -var-file=powervm.tfvars
+  terraform apply -var-file=data/powervm.tfvars
   ```
 
 ### Configure the DHCP and restart the dhcpd service.
