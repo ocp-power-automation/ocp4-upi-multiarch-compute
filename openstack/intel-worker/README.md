@@ -36,7 +36,7 @@ pip3 install -r requirements.txt
 
 6. Click `Create Application Credential`
 
-7. Enter Name `automation-user-id`, where user-id is your shortname. - e.g., pkenchap.
+7. Enter Name `automation-user-id`, where user-id is your shortname. - e.g., myuser.
 
 8. Select Role > Reader / Member / Admin
 
