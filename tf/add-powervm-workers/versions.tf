@@ -15,12 +15,7 @@ terraform {
     }
     openstack = {
       source  = "terraform-provider-openstack/openstack"
-      version = "~> 1.32"
-    }
-    ibm = {
-      source                = "IBM-Cloud/ibm"
-      version               = "~> 1.62.0"
-      configuration_aliases = [ibm]
+      version = "~> 2.0.0"
     }
     http = {
       source  = "hashicorp/http"
