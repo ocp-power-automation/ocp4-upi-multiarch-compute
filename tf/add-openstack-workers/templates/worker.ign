@@ -1,0 +1,64 @@
+{
+    "ignition": {
+        "version": "3.4.0",
+        "config": {
+            "merge": [
+                {
+                    "source": "http://${ignition_ip}:8080/ignition/worker.ign"
+                }
+            ]
+        },
+        "timeouts": {
+            "httpTotal": 30
+        }
+    },
+    "storage": {
+        "files": [
+            {
+                "group": {},
+                "path": "/etc/hostname",
+                "user": {},
+                "contents": {
+                    "source": "data:text/plain;base64,${name}",
+                    "verification": {}
+                },
+                "mode": 420
+            },
+            {
+                "group": {},
+                "path": "/etc/resolv.conf",
+                "user": {},
+                "contents": {
+                    "source": "data:text/plain;base64,${resolver_ip}",
+                    "verification": {}
+                },
+                "mode": 420
+            },
+            {
+                "group": {},
+                "path": "/etc/NetworkManager/dispatcher.d/20-ethtool",
+                "user": {},
+                "contents": {
+                    "source": "data:text/plain;base64,aWYgWyAiJDEiID0gImVudjIiIF0gJiYgWyAiJDIiID0gInVwIiBdCnRoZW4KICBlY2hvICJUdXJuaW5nIG9mZiB0eC1jaGVja3N1bW1pbmciCiAgL3NiaW4vZXRodG9vbCAtLW9mZmxvYWQgZW52MiB0eC1jaGVja3N1bW1pbmcgb2ZmCmVsc2UgCiAgZWNobyAibm90IHJ1bm5pbmcgdHgtY2hlY2tzdW1taW5nIG9mZiIKZmkKaWYgc3lzdGVtY3RsIGlzLWZhaWxlZCBOZXR3b3JrTWFuYWdlci13YWl0LW9ubGluZQp0aGVuCnN5c3RlbWN0bCByZXN0YXJ0IE5ldHdvcmtNYW5hZ2VyLXdhaXQtb25saW5lCmZpCg==",
+                    "verification": {}
+                },
+                "mode": 420
+            }
+        ]
+    },
+    "passwd": {
+        "users": [
+            {
+                "name": "paul",
+                "groups": [
+                    "wheel"
+                ],
+                "sshAuthorizedKeys": [
+                    "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAEAQCgdAtrg3U86JF3zNCx+eeuxLqn5foLphUNImlhkgrFZgRk/aausgsMyfmanZuAIchHJNExtBwIof7/nANtPjH4NSLuy+M2ymBGLA5ilJg0XkdDsDV6bVG2lpF5R+kDraUneIir5WUlM6KhMpFPM3dDhXl4NzUzH89mGQcUz44LmQwhRKCamPHX6dUhfpLvFZbNcozQfwYseBFYIK3Dbqd4GarigtofJEAtEDMi77kIOURAqklruT6L6aRMXTYhCU8eF9JdWcVFNxFs59J+JPTYOURnM/KybnIrsYiNxa8wuMd6O86p5XNTa3meNcD08FHPcA2NO1KqljFAw97ohn3sGvijOq78Rrx7aQatBFk/75LWT7Q2S/qwgg7nRQKNSoG5Q6wokd/wvkFbHuH5zcF0wfqNtk3WOre9TS0133cqExVO3NbndZEB7stUL5glA1+wekMNN2vqqqrpklBU1pp0CGdp1KhQBJIl43yksFYBNJBRIzaw/uyRBVXR+QSJRQd3Rc1VzIk8VcfhWjofYK30lw25L13SUWy+MkZXHab07K11R8amx+gGDNbDFMJYGKIVGlkLtTP912TPB5ZXKL4b+/CMxRQHv/v47K4RKM5i/LU9A6sJ3vFKSYXD42ghGim9Msbqa9uFh7VAXUyksL1cNp2slnr5dB1mYF5lIJPPwqA63nQmtjL8GVldW7GDN7qZwmx1thapNU2P7qUr/LUd7wqGJWaHNDTOkudPeKmirNMDTlSAtKIyWFIUpFW2JI++y+ii1539FP36yH4cy70O9f8EojHiUKHGAv5QvienSNJV0UIF/r37WvwFD/OLxlxUIvpj31of1flkhVWD4NhdpHkT5q2L1W4ZVADgBO4C/tBsDZ+yCdGMYwRjdHYN8BvEa6tJgd3j/b3rZBoJbJUP5Vp2aqQ/uXGEIZlUCVt7xcy6YFOY1WqZtcNsU4eLSrTHWUGsuk7k63FGJNkFqFc4KoBIKktQ5KlJ3Nn3RiOo9IeRTIKfgZA/nyUM1jEP0KpGgalJgGWJhhDI2OL+6X1PU2dRXBuA3BqudYt6bN/hHbVc+AH1Y43F98Kg2VGlTfqOpFWSX4SWg0IoTYAwQ45JsNwmndE3N5FDo8KVB+uDFA/C1c41MZsy1h29V+fwMSD+sOKxNU1HimgrjTakvU5tj7ilDcfNm5IP45rFhXyp0HmkvoGT32aerVzefF0nme5CJiPPce8jqD8c97A9YUWaNgY5N0aXQJ51LY461s09bY/TsGJGwQgR8Vs6Gc1Iujf1utwmDfK0gnd98wkTITqm/QC+EBXpAkKEV8RIAu+1bjEad/zU+kAvyfpQJdMEaEb2QPtybQ2+NgocJdleGiGD paulbastide@pauls-mbp.lan"
+                ],
+                "passwordHash": "$y$j9T$UuoW0ApTc0.N/TTWqkeSo/$V8RtamF8JKtXTUYVAUul6XhvrpPnjVH/5zVH.SMVJ73",
+                "system": true
+            }
+        ]
+    }
+}
