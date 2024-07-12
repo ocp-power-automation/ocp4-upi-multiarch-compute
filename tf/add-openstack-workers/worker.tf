@@ -25,7 +25,7 @@ data "openstack_networking_subnet_v2" "subnet" {
 }
 
 resource "openstack_networking_port_v2" "worker_port" {
-  count          = 2
+  count          = var.worker["count"]
   name           = "${var.prefix}-${count.index}"
   network_id     = data.openstack_networking_network_v2.network.id
   admin_state_up = "true"
@@ -59,7 +59,7 @@ resource "openstack_compute_instance_v2" "worker" {
     "${path.cwd}/templates/worker.ign",
     {
       ignition_ip : "${var.ignition_ip}",
-      resolver_ip :  base64encode("${var.resolver_ip}"),
+      resolver_ip : base64encode("${var.resolver_ip}"),
       name : base64encode("${var.prefix}-${count.index}")
   })
 
