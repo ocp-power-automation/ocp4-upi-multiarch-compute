@@ -28,6 +28,7 @@ logs
 
 # Ignore any .tfvars files that are generated automatically for each Terraform run.
 *.tfvars
+!tf/add-powervm-workers/var.tfvars
 !tf/add-openstack-workers/var.tfvars
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
