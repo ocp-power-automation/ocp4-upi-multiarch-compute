@@ -66,5 +66,5 @@ variable "worker" {
 variable "prefix" {
   type        = string
   description = "The prefix of the added machine"
-  default     = "worker-"
+  default     = "worker"
 }
