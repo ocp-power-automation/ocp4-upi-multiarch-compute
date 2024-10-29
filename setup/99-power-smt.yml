@@ -22,5 +22,5 @@ spec:
           ExecStart=/usr/sbin/ppc64_cpu --smt=4
           [Install]
           WantedBy=multi-user.target
-        name: 99-worker-powersmt
+        name: powersmt.service
         enabled: true
