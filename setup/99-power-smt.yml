@@ -1,0 +1,26 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  creationTimestamp: null
+  labels:
+    machineconfiguration.openshift.io/role: power
+  name: 99-power-smt
+spec:
+  config:
+    ignition:
+      version: 3.4.0
+    systemd:
+      units:
+      - contents: |-
+          [Unit]
+          Description=Set SMT
+          After=network-online.target
+          Before= crio.service
+          [Service]
+          Type=oneshot
+          RemainAfterExit=yes
+          ExecStart=/usr/sbin/ppc64_cpu --smt=4
+          [Install]
+          WantedBy=multi-user.target
+        name: 99-worker-powersmt
+        enabled: true
