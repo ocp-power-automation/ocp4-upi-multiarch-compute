@@ -1,0 +1,14 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfigPool
+metadata:
+  labels:
+    pools.operator.machineconfiguration.openshift.io/power: ""
+  name: power
+spec:
+  machineConfigSelector:
+    matchLabels:
+      machineconfiguration.openshift.io/role: power
+  nodeSelector:
+    matchLabels:
+      node-role.kubernetes.io/power: ""
+  paused: false
