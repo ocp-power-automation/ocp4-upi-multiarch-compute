@@ -1,0 +1,10 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: "power"
+  name: 99-power-kargs-mpath
+spec:
+  kernelArguments:
+    - 'rd.multipath=default'
+    - 'root=/dev/disk/by-label/dm-mpath-root'
