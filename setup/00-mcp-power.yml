@@ -6,7 +6,7 @@ metadata:
   name: power
 spec:
   machineConfigSelector:
-    matchLabels:
+    matchExpressions:
       - {key: machineconfiguration.openshift.io/role, operator: In, values: [worker,power]}
   nodeSelector:
     matchLabels:
