@@ -1,0 +1,23 @@
+{
+    "ignition": {
+        "version": "3.4.0",
+        "config": {
+            "merge": [
+                {
+                    "source": "http://${ignition_ip}:8080/ignition/worker2.ign"
+                }
+            ]
+        },
+        "timeouts": {
+            "httpTotal": 30
+        }
+    },
+    "storage": {
+        "files": [
+        ]
+    },
+    "passwd": {
+        "users": [
+        ]
+    }
+}
