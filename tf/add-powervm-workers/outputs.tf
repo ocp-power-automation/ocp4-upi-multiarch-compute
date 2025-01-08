@@ -8,7 +8,7 @@ output "add_these_to_dhcp" {
 }
 
 output "multi_arch_compute_ip_combo" {
-  value = [for index, s in openstack_networking_port_v2.worker_port : "host ${var.power_worker_prefix}-${index} { hardware ethernet ${s.mac_address}; fixed-address ${s.fixed_ip[0].ip_address}; }"]
+  value = [for index, s in openstack_networking_port_v2.worker_port : "host ${var.power_worker_prefix}-${index} { hardware ethernet ${s.mac_address}; fixed-address ${s.all_fixed_ips[0]}; }"]
 }
 
 output "add_these_to_chrony_allow" {
