@@ -65,5 +65,7 @@ resource "openstack_compute_instance_v2" "worker" {
     port = local.ids[count.index]
   }
 
+  power_state = "shutoff"
+
   config_drive = true
 }

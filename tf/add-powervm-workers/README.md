@@ -21,6 +21,8 @@ terraform plan -var-file=data/var.tfvars
 terraform apply -var-file=data/var.tfvars
 ```
 
+The worker are initiallly powered off.
+
 ### Configure the DHCP and restart the dhcpd service.
 
 Get the MAC Address and IP Address of the VM created on PowerVC. Update /etc/dhcp/dhcpd.conf with the lease/addresses as shown below.
@@ -30,10 +32,12 @@ Get the MAC Address and IP Address of the VM created on PowerVC. Update /etc/dhc
   ```
 
 * Restart the dhcpd.
-  ```
-  systemctl restart dhcpd
-  ```
-* Restart the Worker node for ignition to start.
+
+```
+# systemctl restart dhcpd
+```
+
+* Start the Worker node for ignition to start.
 
 * Approve the CSR certificate to add the worker to intel cluster.
   ```
