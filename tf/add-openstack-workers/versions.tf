@@ -7,15 +7,15 @@ terraform {
   required_providers {
     null = {
       source  = "hashicorp/null"
-      version = "~> 3.2.1"
+      version = "~> 3.2.3"
     }
     time = {
       source  = "hashicorp/time"
-      version = "0.9.1"
+      version = "0.13.0"
     }
     openstack = {
       source  = "terraform-provider-openstack/openstack"
-      version = "~> 2.1.0"
+      version = "~> 3.0.0"
     }
   }
   required_version = ">= 1.5.0"
