@@ -1,4 +1,4 @@
-# Add PowerVM workers to Intel cluster
+# Add PowerVS workers to Intel cluster
 
 User need to update required vales in var.tfvars file such as username and password of IBM intranet credentials to get access to the PowerVC.
 
