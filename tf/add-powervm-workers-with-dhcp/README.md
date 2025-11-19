@@ -1,4 +1,4 @@
-# Create a PowerVM SNO Cluster
+# Add PowerVM workers to Intel cluster
 
 User need to update required vales in var.tfvars file such as username and password of IBM intranet credentials to get access to the PowerVC.
 

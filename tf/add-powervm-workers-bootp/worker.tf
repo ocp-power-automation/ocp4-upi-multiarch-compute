@@ -1,5 +1,5 @@
 ################################################################
-# Copyright 2024 - IBM Corporation. All rights reserved
+# Copyright 2025 - IBM Corporation. All rights reserved
 # SPDX-License-Identifier: Apache-2.0
 ################################################################
 
@@ -46,20 +46,28 @@ locals {
   ids = openstack_networking_port_v2.worker_port.*.id
 }
 
+# Create a blank volume for each worker
+resource "openstack_blockstorage_volume_v3" "worker_volume" {
+  count       = var.worker_count
+  name        = "${var.power_worker_prefix}-volume-${count.index}"
+  size        = var.volume_size
+  volume_type = var.volume_type
+}
+
 resource "openstack_compute_instance_v2" "worker" {
   count             = var.worker_count
   name              = "${var.power_worker_prefix}-${count.index}"
   flavor_id         = var.flavor_id
-  image_id          = var.image_id
   availability_zone = var.openstack_availability_zone
 
-  user_data = templatefile(
-    "${path.cwd}/templates/worker.ign",
-    {
-      ignition_ip : "${var.ignition_ip}",
-      resolver_ip : base64encode("search ${var.resolver_domain} \nnameserver ${var.resolver_ip}"),
-      name : base64encode("${var.power_worker_prefix}-${count.index}")
-  })
+  # Instead of using image_id and ignition, we'll use a blank volume
+  block_device {
+    uuid                  = openstack_blockstorage_volume_v3.worker_volume[count.index].id
+    source_type           = "volume"
+    boot_index            = 0
+    destination_type      = "volume"
+    delete_on_termination = true
+  }
 
   network {
     port = local.ids[count.index]
@@ -67,5 +75,5 @@ resource "openstack_compute_instance_v2" "worker" {
 
   power_state = "shutoff"
 
-  config_drive = true
+  # No config_drive needed since we're not using ignition
 }

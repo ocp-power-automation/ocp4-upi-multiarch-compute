@@ -30,6 +30,8 @@ logs
 *.tfvars
 !tf/add-powervm-workers/var.tfvars
 !tf/add-openstack-workers/var.tfvars
-
+tf/add-powervm-workers-bootp
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
-# example: *tfplan*
+*tfplan*
+
+.vscode

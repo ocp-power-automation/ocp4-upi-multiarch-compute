@@ -1,5 +1,5 @@
 ################################################################
-# Copyright 2024 - IBM Corporation. All rights reserved
+# Copyright 2025 - IBM Corporation. All rights reserved
 # SPDX-License-Identifier: Apache-2.0
 ################################################################
 
@@ -46,24 +46,6 @@ variable "network_name" {
   default     = ""
 }
 
-variable "ignition_ip" {
-  type        = string
-  description = "The IP to retrieve the ignition file"
-  default     = ""
-}
-
-variable "resolver_ip" {
-  type        = string
-  description = "The DNS resolver"
-  default     = ""
-}
-
-variable "resolver_domain" {
-  type        = string
-  description = "The DNS Domain"
-  default     = ""
-}
-
 variable "power_worker_prefix" {
   type        = string
   description = "The power worker prefixes"
@@ -76,9 +58,16 @@ variable "flavor_id" {
   default     = ""
 }
 
-variable "image_id" {
+# Volume-related variables
+variable "volume_size" {
+  type        = number
+  description = "Size of the blank volume in GB"
+  default     = 500
+}
+
+variable "volume_type" {
   type        = string
-  description = "image id from the PowerVC console"
+  description = "Type of volume to create"
   default     = ""
 }
 

@@ -1,0 +1,10 @@
+interface=eth0
+except-interface=lo
+bind-dynamic
+log-dhcp
+
+%{ for index,worker in details}
+dhcp-range=10.20.185.53,${worker.ip_address},12h
+%{ endfor }
+server=${resolver_ip}
+dhcp-hostsfile=/var/lib/dnsmasq/dnsmasq.hostsfile
