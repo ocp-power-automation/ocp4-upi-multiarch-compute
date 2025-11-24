@@ -124,5 +124,6 @@ variable "helper" {
     count         = 1
     instance_type = "tiny"
     image_id      = "b37ea741-8bd9-49e8-be88-7874016d9108"
+    # cb1e8e75-3e80-49e8-aae2-79f873fab8f4
   }
 }

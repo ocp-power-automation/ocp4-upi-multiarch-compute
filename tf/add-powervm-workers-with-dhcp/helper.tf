@@ -124,17 +124,11 @@ EOF
     destination = "/etc/systemd/system/httpd.service.d/restart.conf"
   }
 
-  # Populate `dnsmasq` configuration
-  provisioner "file" {
-    content     = templatefile("${path.module}/templates/dnsmasq.hostsfile.tftpl", local.helper_details)
-    destination = "/var/lib/dnsmasq/dnsmasq.hostsfile"
-  }
-
   # prb112: default route skips dnsmasq and uses the network gateway directly.
   provisioner "remote-exec" {
     inline = [<<EOF
+    echo "" >> /etc/dnsmasq.conf
 echo dhcp-option=option:router,$(nmcli -g ip4.gateway connection show 'System eth0') >> /etc/dnsmasq.conf
-chown dnsmasq:dnsmasq /var/lib/dnsmasq/dnsmasq.hostsfile
 systemctl restart dnsmasq
 EOF
     ]
